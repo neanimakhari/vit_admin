@@ -34,6 +34,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('vehicle-incomes/export-word', [VehicleIncomeController::class, 'exportWord'])->name('vehicle-incomes.export-word');
     Route::resource('vehicle-incomes', VehicleIncomeController::class);
 
+    // Driver Salaries
+    Route::get('/driver-salaries/calculate', [DriverSalaryController::class, 'calculateSalaries'])->name('driver-salaries.calculate');
+    Route::resource('driver-salaries', DriverSalaryController::class);
 });
 
 // Redirect root to admin login
