@@ -9,6 +9,7 @@
 
     <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
         body {
             background-color: #e2e8f0; /* Darker background */
@@ -91,22 +92,27 @@
     <div class="flex h-screen bg-gray-100">
         <!-- Sidebar -->
         <div class="sidebar w-64 space-y-6 py-7 px-2">
-            <a href="{{ route('admin.dashboard') }}" class="text-white flex items-center space-x-2 px-4">
-                <span class="text-2xl font-extrabold">VIT Dashboard</span>
-            </a>
+            <div class="flex flex-col items-center space-y-2 px-4">
+                <img src="{{ asset('images/vit_logo.png') }}" alt="VIT Logo" class="w-16 h-16 object-contain">
+                <span class="text-2xl font-extrabold text-white">VIT Dashboard</span>
+            </div>
 
             <nav class="space-y-1">
-                <a href="{{ route('admin.dashboard') }}" class="block py-2.5 px-4 rounded transition duration-200">
-                    Dashboard
+                <a href="{{ route('admin.dashboard') }}" class="block py-2.5 px-4 rounded transition duration-200 flex items-center text-white hover:bg-gray-700">
+                    <i class="fas fa-tachometer-alt w-6 text-lg"></i>
+                    <span class="ml-3">Dashboard</span>
                 </a>
-                <a href="{{ route('admin.app-users.index') }}" class="block py-2.5 px-4 rounded transition duration-200">
-                    App Users
+                <a href="{{ route('admin.app-users.index') }}" class="block py-2.5 px-4 rounded transition duration-200 flex items-center text-white hover:bg-gray-700">
+                    <i class="fas fa-users w-6 text-lg"></i>
+                    <span class="ml-3">App Users</span>
                 </a>
-                <a href="{{ route('admin.dashboard-users.index') }}" class="block py-2.5 px-4 rounded transition duration-200">
-                    Dashboard Users
+                <a href="{{ route('admin.dashboard-users.index') }}" class="block py-2.5 px-4 rounded transition duration-200 flex items-center text-white hover:bg-gray-700">
+                    <i class="fas fa-user-cog w-6 text-lg"></i>
+                    <span class="ml-3">Dashboard Users</span>
                 </a>
-                <a href="{{ route('admin.vehicle-incomes.index') }}" class="block py-2.5 px-4 rounded transition duration-200">
-                    Vehicle Incomes
+                <a href="{{ route('admin.vehicle-incomes.index') }}" class="block py-2.5 px-4 rounded transition duration-200 flex items-center text-white hover:bg-gray-700">
+                    <i class="fas fa-money-bill-wave w-6 text-lg"></i>
+                    <span class="ml-3">Vehicle Incomes</span>
                 </a>
             </nav>
 
