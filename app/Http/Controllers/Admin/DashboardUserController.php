@@ -11,7 +11,7 @@ class DashboardUserController extends Controller
 {
     public function index()
     {
-        $dashboardUsers = AdminUser::all();
+        $dashboardUsers = AdminUser::latest()->paginate(10);
         return view('admin.dashboard-users.index', compact('dashboardUsers'));
     }
 
@@ -37,27 +37,30 @@ class DashboardUserController extends Controller
         return redirect()->route('admin.dashboard-users.index')->with('success', 'New user created successfully');
     }
 
-    public function edit(AdminUser $dashboardUser)
+    public function edit($id)
     {
-        return view('admin.dashboard-users.edit', compact('dashboardUser'));
+        $user = AdminUser::findOrFail($id);
+        return view('admin.dashboard-users.edit', compact('user'));
     }
 
-    public function update(Request $request, AdminUser $dashboardUser)
+    public function update(Request $request, $id)
     {
+        $user = AdminUser::findOrFail($id);
+
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:admin_users,email,' . $dashboardUser->id,
+            'email' => 'required|string|email|max:255|unique:admin_users,email,'.$user->id,
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
-        $dashboardUser->name = $validatedData['name'];
-        $dashboardUser->email = $validatedData['email'];
-        
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+
         if (!empty($validatedData['password'])) {
-            $dashboardUser->password = Hash::make($validatedData['password']);
+            $user->password = Hash::make($validatedData['password']);
         }
 
-        $dashboardUser->save();
+        $user->save();
 
         return redirect()->route('admin.dashboard-users.index')->with('success', 'User updated successfully');
     }

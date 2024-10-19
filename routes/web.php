@@ -33,6 +33,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('vehicle-incomes/export-pdf', [VehicleIncomeController::class, 'exportPdf'])->name('vehicle-incomes.export-pdf');
     Route::get('vehicle-incomes/export-word', [VehicleIncomeController::class, 'exportWord'])->name('vehicle-incomes.export-word');
     Route::resource('vehicle-incomes', VehicleIncomeController::class);
+
 });
 
 // Redirect root to admin login
