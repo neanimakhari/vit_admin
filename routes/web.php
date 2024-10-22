@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AppUserController;
 use App\Http\Controllers\Admin\DashboardUserController;
 use App\Http\Controllers\Admin\VehicleIncomeController;
+use App\Http\Controllers\Admin\DriverSalaryController;
 
 // Admin routes
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -37,6 +38,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Driver Salaries
     Route::get('/driver-salaries/calculate', [DriverSalaryController::class, 'calculateSalaries'])->name('driver-salaries.calculate');
     Route::resource('driver-salaries', DriverSalaryController::class);
+
+    Route::middleware(['auth', 'admin'])->group(function () {
+        Route::get('/admin/driver-salaries', [DriverSalaryController::class, 'index'])->name('admin.driver-salaries.index');
+        Route::put('/admin/driver-salaries/{driver}', [DriverSalaryController::class, 'update'])->name('admin.driver-salaries.update');
+    });
 });
 
 // Redirect root to admin login

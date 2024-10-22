@@ -7,6 +7,12 @@
 
     <title>@yield('title', 'Vit Dashboard')</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+
     <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -88,10 +94,10 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased">
-    <div class="flex h-screen bg-gray-100">
+<body class="bg-gray-100 font-sans">
+    <div class="flex flex-col md:flex-row min-h-screen">
         <!-- Sidebar -->
-        <div class="sidebar w-64 space-y-6 py-7 px-2">
+        <aside class="bg-gray-800 text-white w-full md:w-64 md:min-h-screen">
             <div class="flex flex-col items-center space-y-2 px-4">
                 <img src="{{ asset('images/vit_logo.png') }}" alt="VIT Logo" class="w-16 h-16 object-contain">
                 <span class="text-2xl font-extrabold text-white">VIT Dashboard</span>
@@ -114,6 +120,12 @@
                     <i class="fas fa-money-bill-wave w-6 text-lg"></i>
                     <span class="ml-3">Vehicle Incomes</span>
                 </a>
+                <a href="{{ route('admin.driver-salaries.index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                    <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Driver Salaries
+                </a>
             </nav>
 
             <!-- User Info -->
@@ -135,28 +147,24 @@
                     </button>
                 </form>
             </div>
-        </div>
+        </aside>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
             <!-- Top Navbar -->
-            <header class="bg-white shadow">
+            <nav class="bg-white shadow-md">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <h1 class="text-3xl font-bold text-gray-900">
                         @yield('header')
                     </h1>
                 </div>
-            </header>
+            </nav>
 
             <!-- Page Content -->
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
-                <div class="container mx-auto px-6 py-8">
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        @yield('content')
-                    </div>
-                </div>
-            </main>
-        </div>
+            <div class="container mx-auto px-4 py-8">
+                @yield('content')
+            </div>
+        </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
