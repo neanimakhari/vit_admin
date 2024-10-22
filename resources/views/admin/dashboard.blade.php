@@ -3,163 +3,193 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="container mx-auto px-6 py-8">
-    <h3 class="text-gray-700 text-3xl font-medium">Dashboard</h3>
+<div class="container mx-auto px-4 sm:px-8">
+    <h2 class="text-2xl font-semibold leading-tight py-6">Dashboard</h2>
 
-    <div class="mt-4">
-        <div class="flex flex-wrap -mx-6">
-            <div class="w-full px-6 sm:w-1/2 xl:w-1/3 mb-4">
-                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
-                    <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75">
-                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">{{ number_format($statistics['totalIncome'], 2) }}</h4>
-                        <div class="text-gray-500">Total Income This Month</div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full px-6 sm:w-1/2 xl:w-1/3 mb-4">
-                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
-                    <div class="p-3 rounded-full bg-red-600 bg-opacity-75">
-                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z"></path></svg>
-                    </div>
-                    <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">{{ number_format($statistics['totalExpense'], 2) }}</h4>
-                        <div class="text-gray-500">Total Expenses This Month</div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full px-6 sm:w-1/2 xl:w-1/3 mb-4">
-                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
-                    <div class="p-3 rounded-full bg-green-600 bg-opacity-75">
-                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">{{ number_format($statistics['totalPetrolCost'], 2) }}</h4>
-                        <div class="text-gray-500">Total Petrol Cost This Month</div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full px-6 sm:w-1/2 xl:w-1/3 mb-4">
-                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
-                    <div class="p-3 rounded-full bg-yellow-600 bg-opacity-75">
-                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    </div>
-                    <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">{{ number_format($statistics['totalPetrolLitres'], 2) }}</h4>
-                        <div class="text-gray-500">Total Petrol Litres This Month</div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full px-6 sm:w-1/2 xl:w-1/3 mb-4">
-                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
-                    <div class="p-3 rounded-full bg-purple-600 bg-opacity-75">
-                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
-                    </div>
-                    <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">{{ number_format($statistics['totalKilometers'], 2) }}</h4>
-                        <div class="text-gray-500">Total Kilometers This Month</div>
-                    </div>
-                </div>
-            </div>
+    <form action="{{ route('admin.dashboard') }}" method="GET" class="mb-8">
+        <div class="flex items-center space-x-4">
+            <select name="period" class="form-select">
+                <option value="week" {{ $period == 'week' ? 'selected' : '' }}>Weekly</option>
+                <option value="month" {{ $period == 'month' ? 'selected' : '' }}>Monthly</option>
+                <option value="year" {{ $period == 'year' ? 'selected' : '' }}>Yearly</option>
+            </select>
+            <input type="number" name="duration" value="{{ $duration }}" min="1" max="60" class="form-input w-20">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Update
+            </button>
+        </div>
+    </form>
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-2">Total Income</h3>
+            <p class="text-3xl font-bold text-green-600">R {{ number_format($statistics['totalIncome'], 2) }}</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-2">Total Expense</h3>
+            <p class="text-3xl font-bold text-red-600">R {{ number_format($statistics['totalExpense'], 2) }}</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-2">Total Distance</h3>
+            <p class="text-3xl font-bold text-blue-600">{{ number_format($statistics['totalDistance'], 2) }} km</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-2">Total Petrol Cost</h3>
+            <p class="text-3xl font-bold text-yellow-600">{{ number_format($statistics['totalPetrolCost'], 2) }}</p>
         </div>
     </div>
 
-    <div class="mt-8">
-        <h4 class="text-gray-600 text-lg font-medium">Vehicle Statistics</h4>
-        <div class="mt-4">
-            <div class="flex flex-col">
-                <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                    <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-                        <table class="min-w-full">
-                            <thead>
-                                <tr>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Vehicle</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Income</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Expense</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Petrol Cost</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Petrol Litres</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Kilometers</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white">
-                                @foreach($statistics['vehicleStats'] as $stat)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">{{ $stat->vehicle }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{ number_format($stat->total_income, 2) }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{ number_format($stat->total_expense, 2) }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{ number_format($stat->total_petrol_cost, 2) }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{ number_format($stat->total_petrol_litres, 2) }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{ number_format($stat->total_kilometers, 2) }}</div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+    <!-- Detailed Statistics -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Efficiency Metrics</h3>
+            <ul class="space-y-2">
+                <li>Average Income per Km: 
+                    @if($statistics['totalDistance'] > 0)
+                        {{ number_format($statistics['averageIncomePerKm'], 2) }}
+                    @else
+                        N/A
+                    @endif
+                </li>
+                <li>Fuel Efficiency: 
+                    @if($statistics['totalPetrolLitres'] > 0)
+                        {{ number_format($statistics['fuelEfficiency'], 2) }} km/L
+                    @else
+                        N/A
+                    @endif
+                </li>
+                <li>Petrol Cost per Km: 
+                    @if($statistics['totalDistance'] > 0)
+                        {{ number_format($statistics['totalPetrolCost'] / $statistics['totalDistance'], 2) }}
+                    @else
+                        N/A
+                    @endif
+                </li>
+            </ul>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Top Performers</h3>
+            <ul class="space-y-2">
+                <li>Most Active Vehicle: 
+                    @if($statistics['mostActiveVehicle'])
+                        {{ $statistics['mostActiveVehicle']->vehicle }} ({{ $statistics['mostActiveVehicle']->count }} trips)
+                    @else
+                        N/A
+                    @endif
+                </li>
+                <li>Top Earning Driver: 
+                    @if($statistics['topEarningDriver'])
+                        {{ $statistics['topEarningDriver']->driver_name }} ({{ number_format($statistics['topEarningDriver']->total_income, 2) }})
+                    @else
+                        N/A
+                    @endif
+                </li>
+            </ul>
         </div>
     </div>
 
+    <!-- Charts -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Income vs Expense</h3>
+            <x-chartjs-component :chart="$incomeExpenseChart" />
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold mb-4">Vehicle Performance</h3>
+            <x-chartjs-component :chart="$vehiclePerformanceChart" />
+        </div>
+    </div>
+
+    <!-- Driver Income Trends Graph -->
     <div class="mt-8">
-        <h4 class="text-gray-600 text-lg font-medium">Driver Statistics</h4>
-        <div class="mt-4">
-            <div class="flex flex-col">
-                <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                    <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-                        <table class="min-w-full">
-                            <thead>
-                                <tr>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Driver</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Income</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Expense</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Petrol Cost</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Petrol Litres</th>
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Kilometers</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white">
-                                @foreach($statistics['driverStats'] as $stat)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 font-medium text-gray-900">{{ $stat->driver_name }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{ number_format($stat->total_income, 2) }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{ number_format($stat->total_expense, 2) }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{ number_format($stat->total_petrol_cost, 2) }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{ number_format($stat->total_petrol_litres, 2) }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div class="text-sm leading-5 text-gray-900">{{ number_format($stat->total_kilometers, 2) }}</div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+        <h4 class="text-gray-600 text-lg font-medium mb-4">Driver Income Trends</h4>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <x-chartjs-component :chart="$driverIncomeChart" />
+        </div>
+    </div>
+
+    <!-- Vehicle Income Trends Graph -->
+    <div class="mt-8">
+        <h4 class="text-gray-600 text-lg font-medium mb-4">Vehicle Income Trends</h4>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <x-chartjs-component :chart="$vehicleIncomeChart" />
+        </div>
+    </div>
+
+    <!-- Vehicle Statistics Table -->
+    <div class="mt-8">
+        <h4 class="text-gray-600 text-lg font-medium mb-4">Vehicle Statistics</h4>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vehicle</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Checking</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Expense</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Income</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Petrol Cost</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Petrol Litres</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kilometers</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Income/Km</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Km/Liter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($statistics['vehicleStats'] as $stat)
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ $stat->vehicle }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">R {{ number_format($stat->checking, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">R {{ number_format($stat->expense, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">R {{ number_format($stat->income, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">R {{ number_format($stat->total_petrol_cost, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ number_format($stat->total_petrol_litres, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ number_format($stat->total_kilometers, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">R {{ number_format($stat->income_per_km, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ number_format($stat->km_per_liter, 2) }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Driver Statistics Table -->
+    <div class="mt-8">
+        <h4 class="text-gray-600 text-lg font-medium mb-4">Driver Statistics</h4>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Driver</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Checking</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Expense</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Income</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Petrol Cost</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Petrol Litres</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kilometers</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Income/Km</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Km/Liter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($statistics['driverStats'] as $stat)
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ $stat->driver_name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">R {{ number_format($stat->checking, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">R {{ number_format($stat->expense, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">R {{ number_format($stat->income, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">R {{ number_format($stat->total_petrol_cost, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ number_format($stat->total_petrol_litres, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ number_format($stat->total_kilometers, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">R {{ number_format($stat->income_per_km, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ number_format($stat->km_per_liter, 2) }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+
 @endsection

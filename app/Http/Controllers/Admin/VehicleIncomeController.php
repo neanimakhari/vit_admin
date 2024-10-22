@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Vehicle;
+use App\Models\Driver;
 use App\Models\VehicleIncome;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -23,16 +25,27 @@ class VehicleIncomeController extends Controller
         if ($request->filled('vehicle')) {
             $query->where('vehicle', 'like', '%' . $request->vehicle . '%');
         }
+
         if ($request->filled('driver')) {
             $query->where('driver_name', 'like', '%' . $request->driver . '%');
         }
-        if ($request->filled('month')) {
-            $date = Carbon::createFromFormat('Y-m', $request->month);
-            $query->whereYear('logged_on', $date->year)
-                  ->whereMonth('logged_on', $date->month);
+
+        if ($request->filled('date_from')) {
+            $query->whereDate('logged_on', '>=', $request->date_from);
         }
 
+        if ($request->filled('date_to')) {
+            $query->whereDate('logged_on', '<=', $request->date_to);
+        }
+
+        if ($request->filled('month')) {
+            $query->whereYear('logged_on', '=', substr($request->month, 0, 4))
+                  ->whereMonth('logged_on', '=', substr($request->month, 5, 2));
+        }
+
+        // Order by logged_on instead of created_at
         $vehicleIncomes = $query->orderBy('logged_on', 'desc')->paginate(10);
+
         return view('admin.vehicle-incomes.index', compact('vehicleIncomes'));
     }
 
@@ -41,7 +54,9 @@ class VehicleIncomeController extends Controller
      */
     public function create()
     {
-        return view('admin.vehicle-incomes.create');
+        $vehicles = Vehicle::all();
+        $drivers = Driver::all();
+        return view('admin.vehicle-incomes.create', compact('vehicles', 'drivers'));
     }
 
     /**
@@ -56,14 +71,19 @@ class VehicleIncomeController extends Controller
             'petrol_poured' => 'required|numeric',
             'petrol_litres' => 'required|numeric',
             'logged_on' => 'required|date',
-            'vehicle' => 'required|string',
-            'driver_id' => 'required|integer',
-            'driver_name' => 'required|string',
+            'vehicle_id' => 'required|exists:vehicles,id',
+            'driver_id' => 'required|exists:drivers,id',
             'expense_detail' => 'nullable|string',
             'expense_price' => 'nullable|numeric',
             'expense_image' => 'nullable|image|max:2048',
             'petrol_slip' => 'nullable|image|max:2048',
         ]);
+
+        $vehicle = Vehicle::findOrFail($validatedData['vehicle_id']);
+        $driver = Driver::findOrFail($validatedData['driver_id']);
+
+        $validatedData['vehicle'] = $vehicle->name;
+        $validatedData['driver_name'] = $driver->name;
 
         if ($request->hasFile('expense_image')) {
             $validatedData['expense_image'] = $request->file('expense_image')->store('expense_images', 'public');
